@@ -11,6 +11,7 @@ interface StatusBarProps {
 interface SystemStatus {
   camera: boolean;
   camera_backend: string;
+  orchestrator_model: string;
   ws_clients: number;
   part_counter: number;
 }
@@ -56,6 +57,7 @@ export default function StatusBar({ status, policyName, onStop }: StatusBarProps
         <div className="flex items-center gap-4 text-[10px] uppercase tracking-widest" style={{ color: "var(--color-text-muted)" }}>
           <Indicator label="API" on={alive} />
           <Indicator label="CAM" on={sys?.camera ?? false} detail={sys?.camera_backend} />
+          <Indicator label="ER" on={!!sys?.orchestrator_model} detail={sys?.orchestrator_model?.includes("robotics") ? "1.5" : undefined} />
           <Indicator label="WS" on={(sys?.ws_clients ?? 0) > 0} detail={sys?.ws_clients?.toString()} />
         </div>
       </div>

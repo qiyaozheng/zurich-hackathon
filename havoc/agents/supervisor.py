@@ -8,7 +8,6 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph_supervisor import create_supervisor
 
 from agents.document_agent import create_document_agent
-from agents.execution_agent import create_execution_agent
 from agents.policy_agent import create_policy_agent
 from agents.report_agent import create_report_agent
 from config import settings
@@ -28,14 +27,10 @@ You coordinate specialized agents to process factory documents and execute polic
 - **report_agent**: Generates shift reports and answers operator questions.
   Use when: operator asks a question or a report is requested.
 
-- **execution_agent**: Sends commands to the robot adapter.
-  Use when: a physical action needs to be executed.
-
 WORKFLOW:
 1. Document Upload → document_agent parses → policy_agent compiles → return policy for approval
 2. Report Request → report_agent queries events and generates report
 3. Operator Q&A → report_agent answers with document traceability
-4. Robot Command → execution_agent sends command with safety check
 
 Always maintain traceability: every decision must trace back to a document source.
 """
@@ -51,10 +46,9 @@ def create_havoc_supervisor():
     doc_agent = create_document_agent()
     policy_agent = create_policy_agent()
     report_agent = create_report_agent()
-    execution_agent = create_execution_agent()
 
     workflow = create_supervisor(
-        agents=[doc_agent, policy_agent, report_agent, execution_agent],
+        agents=[doc_agent, policy_agent, report_agent],
         model=llm,
         prompt=SUPERVISOR_PROMPT,
     )

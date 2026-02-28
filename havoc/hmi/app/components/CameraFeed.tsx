@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { InspectionResult } from "../lib/types";
 
 interface CameraFeedProps {
@@ -13,11 +13,6 @@ interface CameraFeedProps {
 export default function CameraFeed({ lastResult, onInspect, isInspecting, policyActive }: CameraFeedProps) {
   const r = lastResult;
   const [streamError, setStreamError] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    setStreamError(false);
-  }, []);
 
   return (
     <div className="flex flex-col">
@@ -27,12 +22,11 @@ export default function CameraFeed({ lastResult, onInspect, isInspecting, policy
 
       <div
         className="relative border overflow-hidden"
-        style={{ borderColor: "var(--color-border)", background: "#000", aspectRatio: "16/9" }}
+        style={{ borderColor: "var(--color-border)", background: "#000", aspectRatio: "4/3", maxHeight: "200px" }}
       >
         {!streamError ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
-            ref={imgRef}
             src="http://localhost:8000/camera/stream"
             alt="Live camera feed"
             className="w-full h-full object-cover"

@@ -101,7 +101,6 @@ async def lifespan(app: FastAPI):
     from adapters.simulator import SimulatorAdapter
     from adapters.dual import create_adapter
     from tools.vision_tools import Camera
-    from tools.adapter_tools import set_adapter
     from agents.report_agent import set_stores
 
     state.event_store = EventStore(settings.sqlite_path)
@@ -120,7 +119,8 @@ async def lifespan(app: FastAPI):
         dobot_port=settings.dobot_port,
         simulator=sim,
     )
-    set_adapter(state.adapter)
+    from tools.robot_functions import set_robot_backend
+    set_robot_backend(state.adapter, state.connection_manager.broadcast)
 
     state.camera = Camera(
         device_id=settings.camera_device_id,
@@ -128,13 +128,17 @@ async def lifespan(app: FastAPI):
         height=settings.camera_height,
         fps=settings.camera_fps,
         camera_type=settings.camera_type,
+        ws_url=settings.camera_ws_url,
     )
     state.camera.open()
+
+    if settings.camera_type == "websocket" and settings.camera_ws_url:
+        await state.camera.start_ws_receiver()
 
     settings.documents_dir.mkdir(parents=True, exist_ok=True)
 
     state.system_status = "READY"
-    logger.info("Havoc backend started — %s", "READY")
+    logger.info("Havoc backend started — %s (orchestrator: %s)", "READY", settings.gemini_orchestrator_model)
 
     yield
 
@@ -480,15 +484,15 @@ async def inspect_part(req: InspectRequest | None = None):
     if image is None:
         raise HTTPException(503, "No image available — camera not connected and no image provided")
 
-    from agents.vision_agent import run_inspection
-    result = await run_inspection(image, policy, part_id=part_id)
+    from agents.orchestrator import orchestrate_inspection
+    result = await orchestrate_inspection(
+        image, policy, part_id=part_id,
+        broadcast_fn=state.connection_manager.broadcast,
+    )
 
     confidence = result.classification.confidence
     if confidence < state.confidence_threshold and confidence >= settings.confidence_low:
         result.decision.requires_operator = True
-
-    await state.adapter.pick()
-    await state.adapter.place(result.decision.target_bin)
 
     await state.event_store.emit(FactoryEvent(
         event_type=EventType.INSPECTION,
@@ -570,6 +574,52 @@ async def operator_qa(req: QARequest):
 
 
 # ---------------------------------------------------------------------------
+# Task Orchestration (Gemini Robotics-ER free-form tasks)
+# ---------------------------------------------------------------------------
+
+from pydantic import BaseModel as _BaseModel
+
+class OrchestrateRequest(_BaseModel):
+    task: str
+    use_camera: bool = True
+
+
+@app.post("/orchestrate")
+async def orchestrate_task(req: OrchestrateRequest):
+    """Execute a free-form task using Gemini Robotics-ER 1.5."""
+    image = None
+    if req.use_camera and state.camera and state.camera.is_open():
+        image = state.camera.capture()
+
+    policy = state.policy_store.active_policy if state.policy_store else None
+
+    from agents.orchestrator import orchestrate_free_task
+    result = await orchestrate_free_task(
+        task=req.task,
+        image=image,
+        policy=policy,
+        broadcast_fn=state.connection_manager.broadcast,
+    )
+
+    await state.event_store.emit(FactoryEvent(
+        event_type=EventType.COMMAND_SENT,
+        agent="orchestrator",
+        data={
+            "task": req.task,
+            "steps": len(result.get("steps", [])),
+            "summary": result.get("summary", "")[:500],
+        },
+    ))
+
+    await state.connection_manager.broadcast_event(
+        WSEventType.STATUS,
+        {"message": f"Task completed: {req.task}", "steps": len(result.get("steps", []))},
+    )
+
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Events & Stats
 # ---------------------------------------------------------------------------
 
@@ -595,6 +645,7 @@ async def system_status():
         "status": state.system_status,
         "camera": state.camera.is_open() if state.camera else False,
         "camera_backend": state.camera._backend if state.camera else "none",
+        "orchestrator_model": settings.gemini_orchestrator_model,
         "active_policy": state.policy_store.active_policy.policy_id if state.policy_store and state.policy_store.active_policy else None,
         "part_counter": state.part_counter,
         "confidence_threshold": state.confidence_threshold,

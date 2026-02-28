@@ -65,12 +65,6 @@ class DefectInspection(BaseModel):
     overall_confidence: float = 0.0
 
 
-class PlacementVerification(BaseModel):
-    part_visible: bool = False
-    correct_bin: bool = False
-    bin_id: str = ""
-    confidence: float = 0.0
-
 
 # ---------------------------------------------------------------------------
 # Policy Models
@@ -168,16 +162,6 @@ class ExecutablePolicy(BaseModel):
         default_factory=lambda: ["VISION_CLASSIFY", "VISION_DEFECT", "POLICY_DECIDE", "ROUTE_TO_BIN"]
     )
 
-
-class PolicyDiff(BaseModel):
-    diff_type: Literal["RULE_ADDED", "RULE_REMOVED", "RULE_MODIFIED", "THRESHOLD_CHANGED"] = "RULE_MODIFIED"
-    rule_id: str = ""
-    old_value: str | None = None
-    new_value: str | None = None
-    source_old: DocumentSource | None = None
-    source_new: DocumentSource | None = None
-    impact: str = ""
-    affected_bins: list[str] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------------------

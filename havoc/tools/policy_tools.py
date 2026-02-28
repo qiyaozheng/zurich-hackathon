@@ -1,4 +1,4 @@
-"""Policy compilation, validation, diffing, and evaluation tools."""
+"""Policy compilation, validation, and evaluation tools."""
 
 from __future__ import annotations
 
@@ -10,13 +10,9 @@ from langchain_core.tools import tool
 
 from models import (
     Decision,
-    DecisionRule,
     DefectInspection,
-    DocumentSource,
     ExecutablePolicy,
     PartClassification,
-    PolicyConflict,
-    PolicyDiff,
     PolicyValidation,
 )
 from tools.rule_engine import evaluate_condition
@@ -74,30 +70,6 @@ def evaluate_policy(
     )
 
 
-# ---------------------------------------------------------------------------
-# Safety Check
-# ---------------------------------------------------------------------------
-
-def check_safety(command: str, value: float, policy: ExecutablePolicy) -> tuple[bool, str]:
-    """Check if a command value violates any safety constraint."""
-    for constraint in policy.safety_constraints:
-        if constraint.parameter == command:
-            ops = {
-                "<=": lambda v, t: v <= t,
-                ">=": lambda v, t: v >= t,
-                "==": lambda v, t: v == t,
-                "<": lambda v, t: v < t,
-                ">": lambda v, t: v > t,
-            }
-            check = ops.get(constraint.operator, lambda v, t: True)
-            if not check(value, constraint.value):
-                return False, (
-                    f"Safety violation: {command}={value} violates "
-                    f"{constraint.parameter} {constraint.operator} {constraint.value}{constraint.unit} "
-                    f"(from {constraint.source.document_name if constraint.source else 'unknown'})"
-                )
-    return True, "OK"
-
 
 # ---------------------------------------------------------------------------
 # Policy Validation
@@ -140,79 +112,6 @@ def validate_policy(policy: ExecutablePolicy) -> PolicyValidation:
         recommendations=[],
     )
 
-
-# ---------------------------------------------------------------------------
-# Policy Diffing
-# ---------------------------------------------------------------------------
-
-def diff_policies(old: ExecutablePolicy, new: ExecutablePolicy) -> list[PolicyDiff]:
-    """Compare two policies and return a list of differences."""
-    diffs: list[PolicyDiff] = []
-
-    old_rules = {r.id: r for r in old.decision_rules}
-    new_rules = {r.id: r for r in new.decision_rules}
-
-    for rule_id, new_rule in new_rules.items():
-        if rule_id not in old_rules:
-            diffs.append(PolicyDiff(
-                diff_type="RULE_ADDED",
-                rule_id=rule_id,
-                new_value=new_rule.condition,
-                source_new=new_rule.source,
-                impact=f"New rule: {new_rule.condition} → {new_rule.target_bin}",
-                affected_bins=[new_rule.target_bin],
-            ))
-        else:
-            old_rule = old_rules[rule_id]
-            if old_rule.condition != new_rule.condition:
-                diffs.append(PolicyDiff(
-                    diff_type="RULE_MODIFIED",
-                    rule_id=rule_id,
-                    old_value=old_rule.condition,
-                    new_value=new_rule.condition,
-                    source_old=old_rule.source,
-                    source_new=new_rule.source,
-                    impact=f"Condition changed: {old_rule.condition} → {new_rule.condition}",
-                    affected_bins=list({old_rule.target_bin, new_rule.target_bin}),
-                ))
-            elif old_rule.target_bin != new_rule.target_bin:
-                diffs.append(PolicyDiff(
-                    diff_type="RULE_MODIFIED",
-                    rule_id=rule_id,
-                    old_value=old_rule.target_bin,
-                    new_value=new_rule.target_bin,
-                    source_old=old_rule.source,
-                    source_new=new_rule.source,
-                    impact=f"Target changed: {old_rule.target_bin} → {new_rule.target_bin}",
-                    affected_bins=[old_rule.target_bin, new_rule.target_bin],
-                ))
-
-    for rule_id in old_rules:
-        if rule_id not in new_rules:
-            old_rule = old_rules[rule_id]
-            diffs.append(PolicyDiff(
-                diff_type="RULE_REMOVED",
-                rule_id=rule_id,
-                old_value=old_rule.condition,
-                source_old=old_rule.source,
-                impact=f"Rule removed: {old_rule.condition}",
-                affected_bins=[old_rule.target_bin],
-            ))
-
-    old_safety = {c.parameter: c for c in old.safety_constraints}
-    new_safety = {c.parameter: c for c in new.safety_constraints}
-    for param, new_c in new_safety.items():
-        if param in old_safety and old_safety[param].value != new_c.value:
-            diffs.append(PolicyDiff(
-                diff_type="THRESHOLD_CHANGED",
-                rule_id=f"safety_{param}",
-                old_value=str(old_safety[param].value),
-                new_value=str(new_c.value),
-                source_new=new_c.source,
-                impact=f"Safety threshold {param}: {old_safety[param].value} → {new_c.value}",
-            ))
-
-    return diffs
 
 
 # ---------------------------------------------------------------------------

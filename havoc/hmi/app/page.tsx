@@ -198,8 +198,8 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex-1 flex flex-col min-w-0">
-          <div className="flex-1 p-4 min-h-[300px]">
+        <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
+          <div className="p-4 h-[360px] shrink-0">
             <FactoryFloor
               bins={bins}
               totalInspected={stats.total}
