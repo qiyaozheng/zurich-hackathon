@@ -1,0 +1,381 @@
+
+================================================================================
+PARSING: assembly_instruction.pdf (433 KB)
+================================================================================
+Parse time: 19.3s
+
+--- MARKDOWN OUTPUT (2528 chars) ---
+
+| Artikel-Nr.    | Bezeichnung                                           |   Stuick | Artikel-Nr.   | Bezeichnung   | Stuck   |
+|----------------|-------------------------------------------------------|----------|---------------|---------------|---------|
+| EX260-SPN1     | SI-EinheitPROFINET.32Ausgange（negativCOM)M12          |        1 | KQ2W08-99A    | L-Fitting(P)  | 1.00    |
+| SY30M-1-1A-C8  | Versorgungs-EntluftungsplatteD-SeitePush-InDm8        |        1 |               |               |         |
+| SY30M-15-1A    | BefestigungsklammerfurDINSchiene                      |        2 |               |               |         |
+| KQ2P-08        | BlindstopfenfurPush-nDm8weis（P）                       |        1 |               |               |         |
+| AN15-C08       | SchalldampferKunststoff Dm8(R)                        |        2 |               |               |         |
+| SY30M-2-1DA-C6 | Einzelanschlussplatte2Pin,SY3000                      |       16 |               |               |         |
+| SY3000-23-33A  | SchraubezuSY3000,M22Stk.                              |        1 |               |               |         |
+| SY30M-38-1A-C6 | IndividuelleVersorgungseinheit.SY3000                 |        2 |               |               |         |
+| SY30M-60-1A    | EntsperrbaresDoppelruckschlagventilmitRestdruckentlif |        1 |               |               |         |
+| SY3400R-5U1    | 5/3WegeventiMittelst.offen24V                         |        1 |               |               |         |
+| SY3A00R-5U1    | 2x3/2Wegeventil,N.C/N.C.24VDC                         |        1 |               |               |         |
+| SY30M-26-1A    | BlindplatteTyp1Y3000                                  |       14 |               |               |         |
+| KQ2P-06        | BlindstopfenfurPush-inDm6.weif（A）                     |       14 |               |               |         |
+| KQ2P-06        | Blindstopfen furPush-in Dm6.weifs(B)                  |       14 |               |               |         |
+| SY30M-3-1AR-C8 | Versorgungs-/EntliftungsendplatteU-SeitePush-nDm8     |        1 |               |               |         |
+| WVQ1000W-27-16 | Zugankerfur16Stationen                                |        2 |               |               |         |
+| AN05-C04       | Silencerresin,Fitting4mm                              |        1 |               |               |         |
+
+<!-- image -->
+
+SMCValveManifoldConfigurationTool(Online)v6.9.4.17772025/Feb/27
+
+<!-- image -->
+
+--- TABLES FOUND: 1 ---
+
+Table 1:
+       Artikel-Nr.                                            Bezeichnung Stuick Artikel-Nr.   Bezeichnung Stuck
+0       EX260-SPN1           SI-EinheitPROFINET.32Ausgange（negativCOM)M12   1.00  KQ2W08-99A  L-Fitting(P)  1.00
+1    SY30M-1-1A-C8         Versorgungs-EntluftungsplatteD-SeitePush-InDm8   1.00                                
+2      SY30M-15-1A                       BefestigungsklammerfurDINSchiene   2.00                                
+3          KQ2P-08                        BlindstopfenfurPush-nDm8weis（P）   1.00                                
+4         AN15-C08                         SchalldampferKunststoff Dm8(R)   2.00                                
+5   SY30M-2-1DA-C6                       Einzelanschlussplatte2Pin,SY3000  16.00                                
+6    SY3000-23-33A                               SchraubezuSY3000,M22Stk.   1.00                                
+7   SY30M-38-1A-C6                  IndividuelleVersorgungseinheit.SY3000   2.00                                
+8      SY30M-60-1A  EntsperrbaresDoppelruckschlagventilmitRestdruckentlif   1.00                                
+9      SY3400R-5U1                          5/3WegeventiMittelst.offen24V   1.00                                
+10     SY3A00R-5U1                          2x3/2Wegeventil,N.C/N.C.24VDC   1.00                                
+11     SY30M-26-1A                                   BlindplatteTyp1Y3000  14.00                                
+12         KQ2P-06                      BlindstopfenfurPush-inDm6.weif（A）  14.00                                
+13         KQ2P-06                   Blindstopfen furPush-in Dm6.weifs(B)  14.00                                
+14  SY30M-3-1AR-C8      Versorgungs-/EntliftungsendplatteU-SeitePush-nDm8   1.00                                
+15  WVQ1000W-27-16                                 Zugankerfur16Stationen   2.00                                
+16        AN05-C04                               Silencerresin,Fitting4mm   1.00                                
+
+--- DOCUMENT STRUCTURE ---
+Page 1: size=width=576.0 height=820.0800170898438
+Page 2: size=width=576.0 height=820.7999877929688
+
+================================================================================
+PARSING: items_list.pdf (8423 KB)
+================================================================================
+Parse time: 49.3s
+
+--- MARKDOWN OUTPUT (7824 chars) ---
+
+## SS5Y31-KID027
+
+02863613
+
+QR-Barcode
+
+<!-- image -->
+
+Beschreibung
+
+## KOPIERVORLAGE DZEICHNUNG (MO)MAX
+
+Kunde
+
+163069
+
+## PRODUKTIONSAUFTRAG
+
+Holon
+
+K250
+
+Endtermin
+
+14-11
+
+5
+
+Lagerort
+
+Lagerplatz
+
+K02
+
+K02
+
+PA Nr. (MO N)
+
+Produkttyp
+
+9598246PROPOSAL/EU
+
+Barcode
+
+95982460250
+
+<!-- image -->
+
+| Inhalt                                 | CRD:-                                  | CRD:-                                  | CRD:-                                  | Seite 1(2)                                                        |                       |                   |
+|----------------------------------------|----------------------------------------|----------------------------------------|----------------------------------------|-------------------------------------------------------------------|-----------------------|-------------------|
+| Sno                                    | Lager                                  | Lagerplatz Artikelnr.                  | Anz. St.                               | Endprodukt Beschreibung                                           | SIM No./ GTCODE       | QR-CODE           |
+| 10                                     | K01                                    | G4 02908683                            | 10                                     | SS5Y3-10SFAN-16BR-C6D0 MEHRFACHANSCHLUSSPLATTE                    |                       |                   |
+| 40                                     | K01                                    | G2B 00915981                           | 10                                     | SY3000-23-33A BEFESTIGUNGSSCHRAUBEF.VENTIL                        |                       |                   |
+| 50                                     | K02                                    | K02 00712164                           | 20                                     | SY30M-38-1A-C6 INDIVIDUELLEVERSORGUNG                             |                       |                   |
+| 60                                     | K01                                    | G5 00719063                            | 10                                     | SY30M-60-1A DOPPELRUCKSCHLAGVENTILMIT RESTDRUCK-ENTLUFTUNGSVENTIL |                       |                   |
+| 70                                     | K01                                    | G4 02309895                            | 10                                     | SY3400R-5U1-NA VENTIL,ELEKTRISCHBETATIGT,FARBENATUR               |                       |                   |
+| 80                                     | K01                                    | G4 02310113                            | 10                                     | SY3A00R-5U1-NA VENTIL,ELEKTRISCHBETATIGT,FARBENATUR               |                       |                   |
+| 90                                     | K01                                    | G5D 02307919                           | 140                                    | SY30M-26-1A-NA BLINDPLATTE                                        |                       |                   |
+| 110                                    | K02                                    | K02 00731646                           | 20                                     | SY30M-15-1A BEFESTITUNGSKLAMMER(FUR KUNSTSTOFFANSCHLUSSPLATTE)    |                       |                   |
+| 130                                    | K02                                    | A0710061 00001251                      | 280                                    | KQ2P-06 VERSCHLUSSSTOPFEN                                         | KQD32                 |                   |
+| 140                                    | K02                                    | A0709061 00001255                      | 10                                     | KQ2P-08 VERSCHLUSSSTOPFEN                                         | KQD34                 |                   |
+| 150                                    | K01                                    | G4 02743260                            | 10                                     | AN05-C04 SCHALLDAMPFER                                            |                       |                   |
+| W/C W/C Beschreibung K250 SiSp-Montage | W/C W/C Beschreibung K250 SiSp-Montage | W/C W/C Beschreibung K250 SiSp-Montage | W/C W/C Beschreibung K250 SiSp-Montage | W/C W/C Beschreibung K250 SiSp-Montage                            | Zeit/ St. 14,00/0,00M | Zeit/Auftrag 140M |
+
+Text
+
+<!-- image -->
+
+Druckdatum:07.11.2025
+
+Uhrzeit:
+
+04:29:09
+
+Prufzeichen
+
+Anz.
+
+<!-- image -->
+
+Verantwortlicher
+
+Ref.Auftr.Nr.
+
+<!-- image -->
+
+<!-- image -->
+
+## PRODUKTIONSAUFTRAG
+
+<!-- image -->
+
+04:29:09
+
+Holon
+
+Endtermin
+
+## 131-KID027
+
+K250
+
+14-11
+
+02863613
+
+QR-Barcode
+
+5
+
+Anz.
+
+Lagerort
+
+Lagerplatz
+
+K02
+
+K02
+
+10
+
+PA Nr.(MO N°)
+
+Produkttyp
+
+## Beschreibung KOPIERVORLAGE DZEICHNUNG (MO) MAX
+
+9598246 PROPOSAL/EU
+
+Verantwortlicher
+
+Barcode
+
+Kunde
+
+Ref.Auftr.Nr.
+
+163069
+
+Inhalt
+
+CRD: -
+
+Seite  2(2)
+
+95982460250
+
+Sno
+
+Lager Lagerplatz
+
+Anz.
+
+Endprodukt
+
+Artikelnr.
+
+St.
+
+Beschreibung
+
+SIM No./
+
+QR-CODE
+
+160
+
+K02
+
+A0710051
+
+20
+
+AN15-C08
+
+GTCODE
+
+00880927
+
+SCHALLDAMPFER
+
+AND22
+
+170
+
+K01
+
+G5D
+
+10
+
+KQ2W08-99A
+
+00983768
+
+KQW1-4
+
+STECKVERBINDUNG
+
+W/C K250
+
+W/CBeschreibung SiSp-Montage
+
+Zeit/ St. 14,00/0,00 M
+
+Zeit/Auftrag 140M
+
+Nettogewicht
+
+Text
+
+Prufzeichen
+
+Druckdatum:07.11.2025
+
+Uhrzeit:
+
+<!-- image -->
+
+AlleKomponenten verfugbar
+
+<!-- image -->
+
+| Product label   | Product label   | Product number Qty b.u.o.m. Description +pcs /kit   |          |          | Location Simp.partn   |
+|-----------------|-----------------|-----------------------------------------------------|----------|----------|-----------------------|
+| KQ2P-08         | 10              | KQ2P-08                                             | 10       | PCE      | A0709061 KQD34        |
+|                 |                 | VERSCHLUSSSTOPFEN                                   | 10       | PCE      | A0709061 KQD34        |
+| 00001255        | 00001255        |                                                     |          |          |                       |
+| AN15-C08        | 20              | AN15-C08                                            | 20       | PCE      | A0710051 AND22        |
+|                 |                 | SCHALLDAMPFER                                       | 20       | PCE      | A0710051 AND22        |
+| 00880927        | 00880927        | 00880927                                            | 00880927 | 00880927 | 00880927              |
+| KQ2P-06         | 280             | KQ2P-06                                             | 280      | PCE      | A0710061 KQD32        |
+|                 |                 | VERSCHLUSSSTOPFEN                                   | 280      | PCE      | A0710061 KQD32        |
+| 00001251        | 00001251        | 00001251                                            | 00001251 | 00001251 | 00001251              |
+| SY30M-38-1A-C6  | 20              | SY30M-38-1A-C6                                      | 20       | PCE      | K02                   |
+|                 |                 | INDIVIDUELLEVERSORGUNG                              | 20       | PCE      | K02                   |
+| 00712164        | 00712164        | 00712164                                            | 00712164 | 00712164 | 00712164              |
+| SY30M-15-1A     | 20              | SY30M-15-1A                                         | 20       | PCE      | K02                   |
+| 00731646        |                 | BEFESTITUNGSKLAMMER(FURKUNSTSTOFFANSCHLUSSPLATTE    | 20       | PCE      | K02                   |
+
+<!-- image -->
+
+<!-- image -->
+
+<!-- image -->
+
+<!-- image -->
+
+textlines
+
+<!-- image -->
+
+<!-- image -->
+
+<!-- image -->
+
+Picklist
+
+<!-- image -->
+
+textlines
+
+Picklist
+
+<!-- image -->
+
+--- TABLES FOUND: 2 ---
+
+Table 1:
+                                    Inhalt                                   CRD:-                                   CRD:-                                   CRD:-                                                         Seite 1(2)                                          
+0                                      Sno                                   Lager                   Lagerplatz Artikelnr.                                Anz. St.                                            Endprodukt Beschreibung        SIM No./ GTCODE            QR-CODE
+1                                       10                                     K01                             G4 02908683                                      10                     SS5Y3-10SFAN-16BR-C6D0 MEHRFACHANSCHLUSSPLATTE                                          
+2                                       40                                     K01                            G2B 00915981                                      10                         SY3000-23-33A BEFESTIGUNGSSCHRAUBEF.VENTIL                                          
+3                                       50                                     K02                            K02 00712164                                      20                              SY30M-38-1A-C6 INDIVIDUELLEVERSORGUNG                                          
+4                                       60                                     K01                             G5 00719063                                      10  SY30M-60-1A DOPPELRUCKSCHLAGVENTILMIT RESTDRUCK-ENTLUFTUNGSVENTIL                                          
+5                                       70                                     K01                             G4 02309895                                      10                SY3400R-5U1-NA VENTIL,ELEKTRISCHBETATIGT,FARBENATUR                                          
+6                                       80                                     K01                             G4 02310113                                      10                SY3A00R-5U1-NA VENTIL,ELEKTRISCHBETATIGT,FARBENATUR                                          
+7                                       90                                     K01                            G5D 02307919                                     140                                         SY30M-26-1A-NA BLINDPLATTE                                          
+8                                      110                                     K02                            K02 00731646                                      20     SY30M-15-1A BEFESTITUNGSKLAMMER(FUR KUNSTSTOFFANSCHLUSSPLATTE)                                          
+9                                      130                                     K02                       A0710061 00001251                                     280                                          KQ2P-06 VERSCHLUSSSTOPFEN                  KQD32                   
+10                                     140                                     K02                       A0709061 00001255                                      10                                          KQ2P-08 VERSCHLUSSSTOPFEN                  KQD34                   
+11                                     150                                     K01                             G4 02743260                                      10                                             AN05-C04 SCHALLDAMPFER                                          
+12  W/C W/C Beschreibung K250 SiSp-Montage  W/C W/C Beschreibung K250 SiSp-Montage  W/C W/C Beschreibung K250 SiSp-Montage  W/C W/C Beschreibung K250 SiSp-Montage                             W/C W/C Beschreibung K250 SiSp-Montage  Zeit/ St. 14,00/0,00M  Zeit/Auftrag 140M
+
+Table 2:
+     Product label Product label Product number Qty b.u.o.m. Description +pcs /kit                     Location Simp.partn
+0          KQ2P-08            10                                           KQ2P-08        10       PCE      A0709061 KQD34
+1                                                                VERSCHLUSSSTOPFEN        10       PCE      A0709061 KQD34
+2         00001255      00001255                                                                                          
+3         AN15-C08            20                                          AN15-C08        20       PCE      A0710051 AND22
+4                                                                    SCHALLDAMPFER        20       PCE      A0710051 AND22
+5         00880927      00880927                                          00880927  00880927  00880927            00880927
+6          KQ2P-06           280                                           KQ2P-06       280       PCE      A0710061 KQD32
+7                                                                VERSCHLUSSSTOPFEN       280       PCE      A0710061 KQD32
+8         00001251      00001251                                          00001251  00001251  00001251            00001251
+9   SY30M-38-1A-C6            20                                    SY30M-38-1A-C6        20       PCE                 K02
+10                                                          INDIVIDUELLEVERSORGUNG        20       PCE                 K02
+11        00712164      00712164                                          00712164  00712164  00712164            00712164
+12     SY30M-15-1A            20                                       SY30M-15-1A        20       PCE                 K02
+13        00731646                BEFESTITUNGSKLAMMER(FURKUNSTSTOFFANSCHLUSSPLATTE        20       PCE                 K02
+
+--- DOCUMENT STRUCTURE ---
+Page 1: size=width=577.4400024414062 height=821.52001953125
+Page 2: size=width=577.4400024414062 height=821.52001953125
+Page 3: size=width=577.4400024414062 height=821.52001953125
+Page 4: size=width=577.4400024414062 height=820.0800170898438
+Page 5: size=width=577.4400024414062 height=821.52001953125
+Page 6: size=width=577.4400024414062 height=821.52001953125
+Page 7: size=width=577.4400024414062 height=821.52001953125
+Page 8: size=width=577.4400024414062 height=821.52001953125
+
+
+DONE.

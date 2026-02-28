@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --color-bg: #0A0A0A;
+  --color-surface: #111111;
+  --color-surface-2: #1A1A1A;
+  --color-border: #222222;
+  --color-text: #FAFAFA;
+  --color-text-muted: #555555;
+  --color-accent-red: #FF3333;
+  --color-accent-green: #00FF66;
+  --color-accent-yellow: #FFCC00;
+  --color-accent-blue: #3388FF;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-accent-green);
+  color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: var(--color-accent-green); }
+  50% { border-color: transparent; }
+}

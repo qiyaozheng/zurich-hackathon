@@ -1,0 +1,20 @@
+fastapi
+uvicorn[standard]
+langchain
+langchain-google-genai
+langgraph
+langgraph-supervisor
+docling
+google-genai
+opencv-python
+pillow
+aiosqlite
+python-multipart
+python-dotenv
+pydantic
+pydantic-settings
+websockets
+pydobot
+# ZED 2i SDK — install separately via Stereolabs installer:
+# https://www.stereolabs.com/docs/installation/python
+# pyzed (not on PyPI — installed via ZED SDK)
